@@ -1,0 +1,55 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+import java.util.Set;
+import java.util.LinkedHashSet;
+import java.util.StringTokenizer;
+
+class Dpairs{
+	private static BufferedReader bread=new BufferedReader(new InputStreamReader(System.in));
+
+	private static LinkedHashSet<Integer> readInput() throws IOException{
+		LinkedHashSet<Integer> s=new LinkedHashSet<Integer>();
+		StringTokenizer ob=new StringTokenizer(bread.readLine());
+		while(ob.hasMoreTokens()){
+			s.add(Integer.parseInt(ob.nextToken()));			
+		}
+		return s;
+	}
+
+	public static void main(String args[]) throws IOException{
+		String[] dim=bread.readLine().split(" ");
+		LinkedHashSet<Integer> X=readInput();
+		LinkedHashSet<Integer> Y=readInput();	
+		LinkedHashSet<Integer> result=new LinkedHashSet<Integer>();
+		int i=0;
+		for(Integer x:X){
+			int j=0;
+			for(Integer y:Y){
+				int sum=x+y;
+				if(result.add(sum)){
+					System.out.println(i+" "+j);	
+
+				}
+				if(check(result,dim)){	
+					break;
+				}
+				j++;
+			}
+			i++;
+			if(check(result,dim)){	
+				break;
+			}
+		}
+	}
+	private static boolean check(LinkedHashSet<Integer> result,String[] dim){
+
+			if(result.size()==Integer.parseInt(dim[0])+Integer.parseInt(dim[1])-1){	
+				return true;
+			}
+			return false;
+
+	}
+
+
+}

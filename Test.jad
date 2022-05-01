@@ -1,0 +1,29 @@
+// Decompiled by Jad v1.5.8e. Copyright 2001 Pavel Kouznetsov.
+// Jad home page: http://www.geocities.com/kpdus/jad.html
+// Decompiler options: packimports(3) 
+// Source File Name:   Test.java
+
+import java.io.PrintStream;
+import java.util.Arrays;
+
+class Test
+    implements ccna
+{
+
+    Test()
+    {
+    }
+
+    public static void main(String args[])
+    {
+        Integer ainteger[] = {
+            Integer.valueOf(3), Integer.valueOf(4), Integer.valueOf(7), Integer.valueOf(8), Integer.valueOf(9)
+        };
+        System.out.println(Arrays.binarySearch(ainteger, Integer.valueOf(7)));
+        (new Test()).ex();
+    }
+
+    public void ex()
+    {
+    }
+}

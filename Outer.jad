@@ -1,0 +1,49 @@
+// Decompiled by Jad v1.5.8e. Copyright 2001 Pavel Kouznetsov.
+// Jad home page: http://www.geocities.com/kpdus/jad.html
+// Decompiler options: packimports(3) 
+// Source File Name:   LocalClass.java
+
+import java.io.PrintStream;
+
+class Outer
+{
+
+    Outer()
+    {
+        x = 10;
+    }
+
+    public A show()
+    {
+        class _cls1Inner
+            implements A
+        {
+
+            public void innerMethod()
+            {
+                System.out.println((new StringBuilder()).append(x).append(" ").append(Outer.y).toString());
+            }
+
+            final Outer this$0;
+
+            _cls1Inner()
+            {
+                this$0 = Outer.this;
+                super();
+            }
+        }
+
+        return new _cls1Inner();
+    }
+
+    public static void main(String args[])
+    {
+        Outer outer = new Outer();
+        A a = outer.show();
+        a.innerMethod();
+    }
+
+    int x;
+    static int y = 20;
+
+}

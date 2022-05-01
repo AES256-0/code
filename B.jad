@@ -1,0 +1,40 @@
+// Decompiled by Jad v1.5.8e. Copyright 2001 Pavel Kouznetsov.
+// Jad home page: http://www.geocities.com/kpdus/jad.html
+// Decompiler options: packimports(3) 
+// Source File Name:   B.java
+
+import java.io.PrintStream;
+import java.lang.reflect.Field;
+
+class B extends A
+{
+
+    private B()
+    {
+        x = 10;
+    }
+
+    public static void p()
+    {
+        System.out.println("ffff");
+    }
+
+    public static void main(String args[])
+    {
+        B b = new B();
+        try
+        {
+            Field field = A.getDeclaredField("a");
+            field.setAccessible(true);
+            Integer integer = (Integer)field.get(b);
+            b = null;
+            System.out.println(b.x);
+            B _tmp = b;
+            p();
+            System.out.println(integer);
+        }
+        catch(Exception exception) { }
+    }
+
+    int x;
+}

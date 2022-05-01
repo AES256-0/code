@@ -1,0 +1,73 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Set;
+
+class Cvote{
+	private static BufferedReader bread=new BufferedReader(new InputStreamReader(System.in));
+	//N number of chefs
+	//M number of emails
+	//N lines following contains 2 space separated strings denoting name of the chef and country of the chef
+	//Next M lines = emails
+	public static void main(String[] args) throws IOException{
+		String[] info=bread.readLine().split(" ");
+		HashMap<String,String> map=new HashMap<String,String>();
+		for(int i=0;i<Integer.parseInt(info[0]);i++){
+			String temp[]=bread.readLine().split(" ");
+			map.put(temp[0],temp[1]);
+		}
+		HashMap<String,Integer> country_count=new HashMap<String,Integer>();
+		HashMap<String,Integer> player_count=new HashMap<String,Integer>();
+
+		for(int j=0;j<Integer.parseInt(info[1]);j++){
+			String s=bread.readLine();
+			addData(player_count,s);
+			addData(country_count,map.get(s));
+		}
+		System.out.println(returnMax(country_count));
+		System.out.println(returnMax(player_count));
+	}
+
+
+
+	private static void addData(HashMap<String,Integer> map,String s){
+		
+			if(map.containsKey(s)){
+				map.put(s,map.get(s)+1);
+
+			}
+			else{
+				map.put(s,1);
+
+			}
+
+	}
+	private static String returnMax(HashMap<String,Integer> map){
+		Set<String> set=map.keySet();
+		String max="";
+		Integer num=Integer.MIN_VALUE;
+		for(String s:set){
+			if(max.equals("")){
+				max=s;
+
+			}
+			int value=map.get(s);
+			if(value>=num){
+					if(value==num){
+						max=max.compareTo(s)<0?max:s;
+
+					}
+					else{
+					max=s;
+					}
+					num=value;
+			}
+
+		}
+		return max;
+
+	}
+	
+
+}
